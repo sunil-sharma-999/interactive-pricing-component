@@ -42,4 +42,4 @@ Users should be able to:
 
 ## Author
 
-- [Linktree Link ](https://linktr.ee/Sunil.sharma.9)
+- <a href="https://linktr.ee/Sunil.sharma.9" target="_blank" rel="noopener noreferrer">Linktree Link</a>

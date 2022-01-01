@@ -1,0 +1,363 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+// ### Primary
+
+$FullSliderBar: hsl(174, 77%, 80%);
+$SliderBG: hsl(174, 86%, 45%);
+$DiscountBG: hsl(14, 92%, 95%);
+$DiscountText: hsl(15, 100%, 70%);
+$CTAtext: hsl(226, 100%, 87%);
+
+// ### Neutral
+
+$PricingCompBG: hsl (0, 0%, 100%);
+$MainBG: hsl(230, 100%, 99%);
+$EmptySliderBG: hsl(224, 65%, 95%);
+$ToggleBG: hsl(223, 50%, 87%);
+$Text: hsl(225, 20%, 60%);
+$TextCtaBG: hsl(227, 35%, 25%);
+
+@mixin thumb {
+  -webkit-appearance: none;
+  background: url('../images/icon-slider.svg') 50% no-repeat $SliderBG;
+  border: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  // margin-top: -0.5rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px -5px $SliderBG;
+  &:hover {
+    background-color: $FullSliderBar;
+  }
+  &:active {
+    background-color: rgba(0, 172, 172, 0.692);
+  }
+}
+
+@mixin track {
+  -webkit-appearance: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 255, 0.336),
+    rgba(128, 128, 128, 0)
+  );
+  height: 100%;
+  border-radius: 50px;
+}
+
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'manrope';
+  font-size: 15px;
+  position: relative;
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    .text-wrap {
+      background: url('../images/pattern-circles.svg') 50% no-repeat;
+      background-size: 9.5rem;
+      width: 100%;
+      height: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      p {
+        margin: 0.5rem 0;
+      }
+      .title {
+        font-size: 1.3rem;
+        font-weight: 800;
+        color: $TextCtaBG;
+      }
+      .subtitle {
+        font-size: 0.8rem;
+        width: 50%;
+        margin: 0 auto;
+        color: $Text;
+        line-height: 1.3rem;
+      }
+    }
+    //
+    .price-comp {
+      height: 16.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+      grid-template-areas: 'view' 'slider' 'price' 'bill';
+      justify-items: center;
+      align-items: center;
+      .pv {
+        grid-area: view;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 12px;
+        color: $Text;
+      }
+      .price {
+        grid-area: price;
+        display: flex;
+        color: $Text;
+        align-items: center;
+        margin-top: 1rem;
+        span {
+          color: black;
+          font-size: 2rem;
+          font-weight: 800;
+          margin: 0 0.5rem;
+        }
+      }
+      #range {
+        width: 75%;
+        grid-area: slider;
+        -webkit-appearance: none;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        &:hover {
+          cursor: pointer;
+        }
+        &:focus {
+          cursor: grabbing;
+        }
+        // thumb
+        &::-moz-range-thumb {
+          @include thumb();
+        }
+        &::-ms-thumb {
+          @include thumb();
+        }
+        &::-webkit-slider-thumb {
+          @include thumb();
+          margin-top: -10px;
+        }
+
+        //
+        &::-moz-range-progress {
+          background-color: $FullSliderBar;
+          border-radius: 20px;
+          height: 100%;
+        }
+
+        // track
+        &::-moz-range-track {
+          @include track();
+        }
+        &::-webkit-slider-runnable-track {
+          @include track();
+          height: 15px;
+        }
+        &::-ms-track {
+          @include track();
+        }
+      }
+      //billing
+      .billing-comp {
+        align-items: center;
+        grid-area: bill;
+        width: 100%;
+        max-width: 20rem;
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 'monthly toggle yearly';
+        justify-items: center;
+        p {
+          font-size: 12px;
+          color: $Text;
+          &.monthly {
+            grid-area: monthly;
+          }
+          &.year {
+            grid-area: yearly;
+            span {
+              margin-left: 0.5rem;
+              font-weight: 800;
+              font-size: 11px;
+            }
+          }
+          span {
+            color: $DiscountText;
+          }
+        }
+        .toggle {
+          grid-area: toggle;
+          background-color: $SliderBG;
+          width: 1.5rem;
+          height: 1rem;
+          padding: 0.2rem 0.5rem;
+          border-radius: 50px;
+          cursor: pointer;
+          &.month {
+            background-color: $ToggleBG;
+            &:hover {
+              background-color: $SliderBG;
+            }
+          }
+          span {
+            border-radius: 50px;
+            display: block;
+            margin: 0 auto;
+            transform: translateX(50%);
+            background-color: $EmptySliderBG;
+            width: 1rem;
+            height: 1rem;
+            transition: transform 0.15s 0s ease-out;
+            &.month {
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+    }
+    // benefits
+    .bottom-wrap {
+      height: 13rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      ul {
+        font-size: 14px;
+        text-align: center;
+        list-style: none;
+        line-height: 1.7rem;
+        li {
+          color: $Text;
+          img {
+            margin: 0 0.8rem 0 0;
+          }
+        }
+      }
+      // button
+      .btn {
+        font-style: inherit;
+        background-color: $TextCtaBG;
+        display: flex;
+        margin: 0 auto;
+        border: none;
+        padding: 0.8rem 2.6rem;
+        color: $CTAtext;
+        font-weight: 800;
+        font-size: 0.7rem;
+        border-radius: 50px;
+        margin-top: 1.5rem;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body .wrap {
+    max-width: 28rem;
+    .text-wrap {
+      height: 18rem;
+      .title {
+        font-size: 1.8rem;
+      }
+      .subtitle {
+        width: 100%;
+        font-size: 0.95rem;
+      }
+    }
+    .price-comp {
+      height: 13rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas: 'view price' 'slider slider' 'bill bill';
+      width: 100%;
+      .pv {
+        font-size: 1rem;
+        justify-self: flex-start;
+      }
+      #range {
+        width: 100%;
+      }
+      .price {
+        justify-self: flex-end;
+        margin: 0;
+        font-size: 1rem;
+        span {
+          font-size: 2.5rem;
+        }
+      }
+      .billing-comp {
+        max-width: 25rem;
+        .year span::after {
+          content: ' Discount';
+        }
+      }
+    }
+    .bottom-wrap {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 auto;
+      .btn {
+        margin: 0;
+      }
+      ul {
+        text-align: left;
+      }
+    }
+  }
+}
+
+// modal
+
+.modal {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  justify-content: center;
+  .popup {
+    background-color: whitesmoke;
+    width: 60%;
+    min-width: 200px;
+    max-width: 300px;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    line-height: 1.5rem;
+    margin: auto;
+    height: max-content;
+    .benefits {
+      position: relative;
+      left: -1rem;
+      margin-top: 0.5rem;
+      color: $Text;
+    }
+    img {
+      margin: 0 0.5rem;
+    }
+    .close {
+      position: absolute;
+      margin: auto;
+      color: black;
+      width: 1rem;
+      height: 1rem;
+      font-size: 1rem;
+      padding: 0.5rem;
+      right: 0;
+      top: 0;
+      cursor: pointer;
+    }
+  }
+}

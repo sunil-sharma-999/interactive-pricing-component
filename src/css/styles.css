@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "manrope";
+  font-size: 15px;
+  position: relative;
+}
+body .wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+body .wrap .text-wrap {
+  background: url("../images/pattern-circles.svg") 50% no-repeat;
+  background-size: 9.5rem;
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+body .wrap .text-wrap p {
+  margin: 0.5rem 0;
+}
+body .wrap .text-wrap .title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #293356;
+}
+body .wrap .text-wrap .subtitle {
+  font-size: 0.8rem;
+  width: 50%;
+  margin: 0 auto;
+  color: #858fad;
+  line-height: 1.3rem;
+}
+body .wrap .price-comp {
+  height: 16.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas: "view" "slider" "price" "bill";
+  justify-items: center;
+  align-items: center;
+}
+body .wrap .price-comp .pv {
+  grid-area: view;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #858fad;
+}
+body .wrap .price-comp .price {
+  grid-area: price;
+  display: flex;
+  color: #858fad;
+  align-items: center;
+  margin-top: 1rem;
+}
+body .wrap .price-comp .price span {
+  color: black;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0.5rem;
+}
+body .wrap .price-comp #range {
+  width: 75%;
+  grid-area: slider;
+  -webkit-appearance: none;
+  height: 15px;
+  display: flex;
+  align-items: center;
+}
+body .wrap .price-comp #range:hover {
+  cursor: pointer;
+}
+body .wrap .price-comp #range:focus {
+  cursor: grabbing;
+}
+body .wrap .price-comp #range::-moz-range-thumb {
+  -webkit-appearance: none;
+  background: url("../images/icon-slider.svg") 50% no-repeat #10d5c2;
+  border: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px -5px #10d5c2;
+}
+body .wrap .price-comp #range::-moz-range-thumb:hover {
+  background-color: #a5f3eb;
+}
+body .wrap .price-comp #range::-moz-range-thumb:active {
+  background-color: rgba(0, 172, 172, 0.692);
+}
+body .wrap .price-comp #range::-ms-thumb {
+  -webkit-appearance: none;
+  background: url("../images/icon-slider.svg") 50% no-repeat #10d5c2;
+  border: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px -5px #10d5c2;
+}
+body .wrap .price-comp #range::-ms-thumb:hover {
+  background-color: #a5f3eb;
+}
+body .wrap .price-comp #range::-ms-thumb:active {
+  background-color: rgba(0, 172, 172, 0.692);
+}
+body .wrap .price-comp #range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: url("../images/icon-slider.svg") 50% no-repeat #10d5c2;
+  border: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50px;
+  box-shadow: 0 8px 25px -5px #10d5c2;
+  margin-top: -10px;
+}
+body .wrap .price-comp #range::-webkit-slider-thumb:hover {
+  background-color: #a5f3eb;
+}
+body .wrap .price-comp #range::-webkit-slider-thumb:active {
+  background-color: rgba(0, 172, 172, 0.692);
+}
+body .wrap .price-comp #range::-moz-range-progress {
+  background-color: #a5f3eb;
+  border-radius: 20px;
+  height: 100%;
+}
+body .wrap .price-comp #range::-moz-range-track {
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.336), rgba(128, 128, 128, 0));
+  height: 100%;
+  border-radius: 50px;
+}
+body .wrap .price-comp #range::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.336), rgba(128, 128, 128, 0));
+  height: 100%;
+  border-radius: 50px;
+  height: 15px;
+}
+body .wrap .price-comp #range::-ms-track {
+  -webkit-appearance: none;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.336), rgba(128, 128, 128, 0));
+  height: 100%;
+  border-radius: 50px;
+}
+body .wrap .price-comp .billing-comp {
+  align-items: center;
+  grid-area: bill;
+  width: 100%;
+  max-width: 20rem;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "monthly toggle yearly";
+  justify-items: center;
+}
+body .wrap .price-comp .billing-comp p {
+  font-size: 12px;
+  color: #858fad;
+}
+body .wrap .price-comp .billing-comp p.monthly {
+  grid-area: monthly;
+}
+body .wrap .price-comp .billing-comp p.year {
+  grid-area: yearly;
+}
+body .wrap .price-comp .billing-comp p.year span {
+  margin-left: 0.5rem;
+  font-weight: 800;
+  font-size: 11px;
+}
+body .wrap .price-comp .billing-comp p span {
+  color: #ff8c66;
+}
+body .wrap .price-comp .billing-comp .toggle {
+  grid-area: toggle;
+  background-color: #10d5c2;
+  width: 1.5rem;
+  height: 1rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+}
+body .wrap .price-comp .billing-comp .toggle.month {
+  background-color: #cdd7ee;
+}
+body .wrap .price-comp .billing-comp .toggle.month:hover {
+  background-color: #10d5c2;
+}
+body .wrap .price-comp .billing-comp .toggle span {
+  border-radius: 50px;
+  display: block;
+  margin: 0 auto;
+  transform: translateX(50%);
+  background-color: #eaeefb;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.15s 0s ease-out;
+}
+body .wrap .price-comp .billing-comp .toggle span.month {
+  transform: translateX(-50%);
+}
+body .wrap .bottom-wrap {
+  height: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+body .wrap .bottom-wrap ul {
+  font-size: 14px;
+  text-align: center;
+  list-style: none;
+  line-height: 1.7rem;
+}
+body .wrap .bottom-wrap ul li {
+  color: #858fad;
+}
+body .wrap .bottom-wrap ul li img {
+  margin: 0 0.8rem 0 0;
+}
+body .wrap .bottom-wrap .btn {
+  font-style: inherit;
+  background-color: #293356;
+  display: flex;
+  margin: 0 auto;
+  border: none;
+  padding: 0.8rem 2.6rem;
+  color: #bdccff;
+  font-weight: 800;
+  font-size: 0.7rem;
+  border-radius: 50px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+body .wrap .bottom-wrap .btn:hover {
+  color: white;
+}
+
+@media screen and (min-width: 800px) {
+  body .wrap {
+    max-width: 28rem;
+  }
+  body .wrap .text-wrap {
+    height: 18rem;
+  }
+  body .wrap .text-wrap .title {
+    font-size: 1.8rem;
+  }
+  body .wrap .text-wrap .subtitle {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+  body .wrap .price-comp {
+    height: 13rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "view price" "slider slider" "bill bill";
+    width: 100%;
+  }
+  body .wrap .price-comp .pv {
+    font-size: 1rem;
+    justify-self: flex-start;
+  }
+  body .wrap .price-comp #range {
+    width: 100%;
+  }
+  body .wrap .price-comp .price {
+    justify-self: flex-end;
+    margin: 0;
+    font-size: 1rem;
+  }
+  body .wrap .price-comp .price span {
+    font-size: 2.5rem;
+  }
+  body .wrap .price-comp .billing-comp {
+    max-width: 25rem;
+  }
+  body .wrap .price-comp .billing-comp .year span::after {
+    content: " Discount";
+  }
+  body .wrap .bottom-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  body .wrap .bottom-wrap .btn {
+    margin: 0;
+  }
+  body .wrap .bottom-wrap ul {
+    text-align: left;
+  }
+}
+.modal {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  justify-content: center;
+}
+.modal .popup {
+  background-color: whitesmoke;
+  width: 60%;
+  min-width: 200px;
+  max-width: 300px;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  line-height: 1.5rem;
+  margin: auto;
+  height: max-content;
+}
+.modal .popup .benefits {
+  position: relative;
+  left: -1rem;
+  margin-top: 0.5rem;
+  color: #858fad;
+}
+.modal .popup img {
+  margin: 0 0.5rem;
+}
+.modal .popup .close {
+  position: absolute;
+  margin: auto;
+  color: black;
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}/*# sourceMappingURL=styles.css.map */
